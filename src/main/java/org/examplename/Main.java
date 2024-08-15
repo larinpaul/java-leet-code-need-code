@@ -1,5 +1,8 @@
 package org.examplename;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -14,5 +17,25 @@ public class Main {
             System.out.println("i = " + i);
 
         }
+
+        System.out.println("Let's test the BigInteger class! :)");
+
+        BigInteger bi1 = new BigInteger("12345678900987654321");
+        BigInteger bi2 = new BigInteger("2");
+
+        BigInteger bi3 = bi1.divide(bi2);
+
+        System.out.println(bi1);
+        System.out.println(bi2);
+        System.out.println(bi3);
+
+        BigDecimal bd1 = new BigDecimal("1234567890.0987654321");
+        BigDecimal bd2 = new BigDecimal("3.0");
+
+        BigDecimal bd3 = bd1.divide(bd2);
+        System.out.println(bd1);
+        System.out.println(bd2);
+        System.out.println(bd3);
+
     }
 }
