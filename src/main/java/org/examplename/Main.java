@@ -37,5 +37,14 @@ public class Main {
         System.out.println(bd2);
         System.out.println(bd3);
 
+        System.out.println();
+        for (BigInteger bi = BigInteger.valueOf(5);
+             bi.compareTo(BigInteger.ZERO) > 0;
+             bi = bi.subtract(BigInteger.ONE)) {
+
+            System.out.println(bi);
+        }
+
+
     }
 }
