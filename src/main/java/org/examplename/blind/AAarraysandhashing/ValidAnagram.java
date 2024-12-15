@@ -65,20 +65,20 @@ class Solution {
             return false;
         }
 
-        Map<Character, Integer> dict = new HashMap<>();
+        Map<Character, Integer> hm = new HashMap<>();
 
         for (char c : s.toCharArray()) {
-            dict.put(c, dict.getOrDefault(c, 0) + 1); // getOrDefault is a method in Java's Map interface that returns the value associated with a given key, or a default value if the key is not present in the map (provided as a second argument)
+            hm.put(c, hm.getOrDefault(c, 0) + 1); // getOrDefault is a method in Java's Map interface that returns the value associated with a given key, or a default value if the key is not present in the map (provided as a second argument)
         }
 
         for (char c : t.toCharArray()) {
-            if (!dict.containsKey(c)) {
+            if (!hm.containsKey(c)) {
                 return false;
             }
-            dict.put(c, dict.get(c) - 1);
+            hm.put(c, hm.get(c) - 1);
         }
 
-        for (int value : dict.values()) {
+        for (int value : hm.values()) {
             if (value != 0) {
                 return false;
             }
