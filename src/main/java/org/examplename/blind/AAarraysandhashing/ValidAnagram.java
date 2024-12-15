@@ -1,5 +1,8 @@
 package org.examplename.blind.AAarraysandhashing;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ValidAnagram {
 
 
@@ -49,25 +52,39 @@ public class ValidAnagram {
 
     public static void main(String[] args) {
         System.out.println("Hi");
+        Solution solution = new Solution();
+        System.out.println(solution.isAnagram("racecar", "carrace")); // true
+        System.out.println(solution.isAnagram("carrace", "ddd")); // false
     }
 
 }
 
 class Solution {
     public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
 
-        /*
+        Map<Character, Integer> dict = new HashMap<>();
 
-        s
+        for (char c : s.toCharArray()) {
+            dict.put(c, dict.getOrDefault(c, 0) + 1); // getOrDefault is a method in Java's Map interface that returns the value associated with a given key, or a default value if the key is not present in the map (provided as a second argument)
+        }
 
-        t
+        for (char c : t.toCharArray()) {
+            if (!dict.containsKey(c)) {
+                return false;
+            }
+            dict.put(c, dict.get(c) - 1);
+        }
 
+        for (int value : dict.values()) {
+            if (value != 0) {
+                return false;
+            }
+        }
 
-
-
-         */
-
-
+        return true;
     }
 }
 
