@@ -1,5 +1,6 @@
 package org.examplename.blind.AAarraysandhashing;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +56,10 @@ public class ValidAnagram {
         Solution solution = new Solution();
         System.out.println(solution.isAnagram("racecar", "carrace")); // true
         System.out.println(solution.isAnagram("carrace", "ddd")); // false
+        System.out.println("Optimized solution:");
+        LessOptimizedSolution lessOptimizedSolution = new LessOptimizedSolution();
+        System.out.println(lessOptimizedSolution.isAnagram("racecar", "carrace")); // true
+        System.out.println(lessOptimizedSolution.isAnagram("carrace", "ddd")); // false
     }
 
 }
@@ -88,3 +93,16 @@ class Solution {
     }
 }
 
+class LessOptimizedSolution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        char[] sSort = s.toCharArray();
+        char[] tSort = t.toCharArray();
+        Arrays.sort(sSort);
+        Arrays.sort(tSort);
+        return Arrays.equals(sSort, tSort);
+    }
+}
