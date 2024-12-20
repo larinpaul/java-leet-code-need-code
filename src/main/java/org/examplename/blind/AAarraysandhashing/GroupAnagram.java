@@ -1,6 +1,6 @@
 package org.examplename.blind.AAarraysandhashing;
 
-import java.util.List;
+import java.util.*;
 
 public class GroupAnagram {
 
@@ -55,7 +55,10 @@ public class GroupAnagram {
 
 
     public static void main(String[] args) {
-
+        GroupAnagramSolution solution = new GroupAnagramSolution();
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        List<List<String>> result = solution.groupAnagamsHashMap(strs);
+        System.out.println(result);
     }
 
 }
@@ -68,8 +71,67 @@ class GroupAnagramSolution {
     }
 
     // 1. Sorting solution
+    public List<List<String>> groupAnagramSort(String[] strs) {
+        Map<String, List<String>> res = new HashMap<>();
+        for (String s : strs) {
+            char[] charArray = s.toCharArray();
+            Arrays.sort(charArray);
+            String sortedS = new String(charArray);
+            res.putIfAbsent(sortedS, new ArrayList<>());
+            res.get(sortedS).add(s);
+        }
+        return new ArrayList<>(res.values());
+    }
+    // Time & Space Complexity
+    // * Time complexity: O(m * n log n)
+    // * Space complexity: O(m * n)
+    // Where m is the number of strings and n is the length of the longest string.
 
     // 2. Hash table
+    public List<List<String>> groupAnagamsHashMap(String[] strs) {
+        Map<String, List<String>> res = new HashMap<>();
+        for (String s : strs) {
+            int[] count = new int[26];
+            for (char c : s.toCharArray()) {
+                count[c - 'a']++;
+            }
+            String key = Arrays.toString(count);
+            res.putIfAbsent(key, new ArrayList<>());
+            res.get(key).add(s);
+        }
+        return new ArrayList<>(res.values());
+    }
+
+    public List<List<String>> groupAnagamsHashMapCharFrequency(String[] strs) {
+        Map<CharFrequency, List<String>> res = new HashMap<>();
+        for (String s : strs) {
+            CharFrequency frequency = new CharFrequency();
+            for (char c : s.toCharArray()) {
+                frequency.count[c - 'a']++;
+            }
+            res.putIfAbsent(frequency, new ArrayList<>());
+            res.get(frequency).add(s);
+        }
+        return new ArrayList<>(res.values());
+    }
+
+    class CharFrequency {
+        int[] count = new int[26];
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            CharFrequency that = (CharFrequency) o;
+            return Arrays.equals(count, that.count);
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(count);
+        }
+    }
+
 
 }
 
