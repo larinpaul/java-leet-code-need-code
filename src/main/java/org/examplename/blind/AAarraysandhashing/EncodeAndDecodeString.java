@@ -52,18 +52,36 @@ public class EncodeAndDecodeString {
     // then use that number
     // to read the specified number of characters as the string.
 
+    public static void main(String[] args) {
+        SoltuionEcodeAndDecodeStrings s = new SoltuionEcodeAndDecodeStrings();
+        System.out.println(s.decodeOptimal("Hi"));
+    }
+
 }
 
 class SoltuionEcodeAndDecodeStrings  {
 
-    public String encode(List<String> strs) {
+    public String encodeN(List<String> strs) {
 
         return "Hello";
     }
 
-    public List<String> decode(String str) {
+    public List<String> decodeN(String str) {
 
         return Arrays.asList("You can do it! :)");
     }
+
+    public String encodeOptimal(List<String> strs) {
+
+        return "Hello Optimal";
+    }
+
+    public List<String> decodeOptimal(String str) {
+
+        return Arrays.asList("You can do it! :)");
+    }
+
+
+
 
 }
